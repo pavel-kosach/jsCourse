@@ -1,3 +1,4 @@
 "use strict";
-const a = 1;
-let b = "Вторая переменная";
+let title, screens, screenPrice, rollback, fullPrice, adaptive;
+alert("Сообщение с любым текстом");
+console.log("Сообщение в консоли");
