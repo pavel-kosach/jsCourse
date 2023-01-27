@@ -22,9 +22,10 @@ console.log(
 );
 
 // Привести строку screens к нижнему регистру и разбить строку на массив, вывести массив в консоль
-screens = screens.toLowerCase();
-screens = screens.split();
-console.log(screens);
+console.log(screens.toLowerCase().split());
+// screens = screens.toLowerCase();
+// screens = screens.split();
+// console.log(screens);
 
 // Вывести в консоль Процент отката посреднику за работу (fullPrice * (rollback/100))
 console.log(
