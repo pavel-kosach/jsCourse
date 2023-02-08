@@ -19,21 +19,30 @@ const appData = {
     appData.logger();
   },
   asking: function () {
-    appData.title = prompt("Как называется ваш проект?", "Мой проект");
+    do {
+      appData.title = prompt("Как называется ваш проект?", "Мой проект");
+    } while (appData.isNumber(appData.title)); // проверка на строку
 
     for (let i = 0; i < 2; i++) {
-      let name = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
+      let name;
+      do {
+        name = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
+      } while (appData.isNumber(name)); // проверка на строку
+
       let price = 0;
 
       do {
         price = +prompt("Сколько будет стоить данная работа?");
-      } while (!appData.isNumber(price));
+      } while (!appData.isNumber(price)); // проверка на число
 
       appData.screens.push({ id: i, name: name, price: price });
     }
 
     for (let i = 0; i < 2; i++) {
-      let name = prompt("Какой дополнительный тип услуги нужен?", "service1");
+      let name;
+      do {
+        name = prompt("Какой дополнительный тип услуги нужен?", "service1");
+      } while (appData.isNumber(name)); // проверка на строку
       let price = 0;
 
       do {
@@ -56,7 +65,7 @@ const appData = {
     }
   },
   isNumber: function (num) {
-    return !isNaN(parseFloat(num)) && isFinite(num) && num !== "0";
+    return !isNaN(parseFloat(num)) && isFinite(num);
   },
   getFullPrice: function () {
     appData.fullPrice = appData.screenPrice + appData.allServicePrices;
