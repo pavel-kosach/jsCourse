@@ -20,7 +20,7 @@ fivesBookLi[1].after(fivesBookLi[9]);
 fivesBookLi[9].after(fivesBookLi[3]);
 fivesBookLi[4].after(fivesBookLi[2]);
 fivesBookLi[7].after(fivesBookLi[5]);
-sixBookLi[9].insertAdjacentHTML("afterbegin", "<li>Глава 8: За пределами ES6</li>");
+sixBookLi[9].insertAdjacentHTML("beforebegin", "<li>Глава 8: За пределами ES6</li>");
 
 console.log(books);
 console.log(sixBookLi);
