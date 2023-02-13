@@ -6,7 +6,7 @@ const otherItemsPercent = document.querySelectorAll(".other-items.percent");
 const otherItemsNumber = document.querySelectorAll(".other-items.number");
 
 const inputRange = document.querySelector(".rollback input");
-const spanValue = document.querySelector(".rollback .range-value");
+const inputRangeValue = document.querySelector(".rollback .range-value");
 
 const startBtn = document.getElementsByClassName("handler_btn")[0];
 const resetBtn = document.getElementsByClassName("handler_btn")[1];
@@ -35,6 +35,7 @@ const appData = {
     appData.addTitle();
     startBtn.addEventListener("click", appData.start);
     buttoPlus.addEventListener("click", appData.addScreenBlock);
+    inputRange.addEventListener("input", appData.addRollback);
   },
   addTitle: function () {
     document.title = title.textContent;
@@ -43,9 +44,8 @@ const appData = {
     appData.addScreens();
     appData.addServices();
     appData.addPrices();
-    // appData.getServicePercentPrices();
-    // appData.logger();
     appData.showResult();
+    appData.logger();
   },
   showResult: function () {
     total.value = appData.screenPrice;
@@ -64,7 +64,6 @@ const appData = {
         price: +select.value * +input.value,
       });
     });
-    console.log(appData.screens);
   },
   addServices: function () {
     otherItemsPercent.forEach(function (item) {
@@ -87,16 +86,14 @@ const appData = {
   },
   addScreenBlock: function () {
     const cloneScreen = screens[0].cloneNode(true);
-    console.log(cloneScreen);
     screens[screens.length - 1].after(cloneScreen);
   },
   addPrices: function () {
-    // метод высчитывает стоимость услуг, экранов
+    appData.rollback = +inputRange.value;
+
     for (let screen of appData.screens) {
-      // перебираем типы экранов
       appData.screenPrice += +screen.price;
     }
-
     for (let key in appData.servicesNumber) {
       appData.servicePricesNumber += appData.servicesNumber[key];
     }
@@ -106,30 +103,16 @@ const appData = {
 
     appData.fullPrice =
       appData.screenPrice + appData.servicePricesNumber + appData.servicePricesPercent;
-  },
-  getServicePercentPrices: function () {
+
     appData.servicePercentPrice = Math.ceil(
       appData.fullPrice - appData.fullPrice * (appData.rollback / 100)
     );
   },
-  getRollBackMessage: function (price) {
-    if (price > 30000 || price == 30000) {
-      return "Даем скидку в 10%";
-    } else if (price > 15000 && price < 30000) {
-      return "Даем скидку в 5%";
-    } else if ((price < 15000 && price > 0) || price == 15000) {
-      return "Скидка не предусмотрена";
-    } else if (price < 0 || price == 0) {
-      return "Что то пошло не так";
-    }
+  addRollback: function (event) {
+    inputRangeValue.textContent = event.target.value + "%";
   },
   logger: function () {
-    console.log(appData.fullPrice);
-    console.log(appData.servicePercentPrice);
-    console.log(appData.screens);
-    // for (let key in appData) {
-    //   console.log("Ключ:" + key + " " + "Значение: " + appData[key]);
-    // }
+    console.log(appData);
   },
 };
 
