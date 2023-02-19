@@ -139,17 +139,34 @@ const appData = {
     });
     startBtn.style.display = "none";
     resetBtn.style.display = "flex";
-    resetBtn.addEventListener("click", this.reset);
+    resetBtn.addEventListener("click", this.reset.bind(appData));
   },
   reset: function () {
     startBtn.style.display = "flex";
     resetBtn.style.display = "none";
+    document.querySelectorAll("input[type=checkbox]").forEach((ckeckbox) => {
+      ckeckbox.checked = false;
+    });
+    document.querySelector(".main-controls__input input[type=text]").value = "";
+    document.querySelector(".main-controls__select select").value = "";
+    inputRange.value = "0";
+    inputRangeValue.textContent = "0%";
+    document.querySelectorAll(".total-input").forEach((input) => {
+      input.value = 0;
+    });
     document.querySelectorAll("input[type=text]").forEach((input) => {
       input.disabled = false;
     });
     document.querySelectorAll("select").forEach((select) => {
       select.disabled = false;
     });
+    // const newScreens = this.screens.splice(0);
+    // this.screens = newScreens;
+    // console.log(newScreens);
+    // newScreens.forEach((item) => {
+    //   console.log(item);
+    //   item.remove();
+    // });
   },
   logger: function () {
     // console.log("this");
