@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form action="#">
+        <h1>Форма</h1>
+        <input type="text" placeholder="Название продукта" required />
+        <input type="checkbox" placeholder="Предоплата" required />
+        <input type="text" placeholder="Стоимость" required />
+        <input type="text" placeholder="Дата заявки" required />
+        <input type="text" placeholder="Период работы" required />
+        <select name="country" required>
+          <option value="webDeb">Разработка сайта</option>
+          <option value="seo">SEO</option>
+        </select>
+        <input type="submit" required />
+      </form>
+      <h2>Таблица</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Название продукта</th>
+            <th>Предоплата</th>
+            <th>Стоимость</th>
+            <th>Дата заявки</th>
+            <th>Период работы</th>
+            <th>Регион</th>
+            <th>Удаление</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Разработка сайта</td>
+            <td>Да</td>
+            <td>100</td>
+            <td>05.01.2023</td>
+            <td>7 дней</td>
+            <td>Минск</td>
+            <td><button class="delBtn">Удалить</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="./main.js" defer></script>
+  </body>
+</html>
