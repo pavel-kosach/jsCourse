@@ -19,14 +19,42 @@ const timer = (deadline) => {
 
   const updateClock = () => {
     let getTime = getTimeRemaining();
-    timerDays.textContent = getTime.days;
-    timerHours.textContent = getTime.hours;
-    timerMinutes.textContent = getTime.minutes;
-    timerSeconds.textContent = getTime.seconds;
-    if (getTime.timeRemaining > 0) setTimeout(updateClock, 1000);
+
+    // проверяем кол-во символов в строке с числом, если 1 символ, добавляем 0 перед цифрой
+    // секунды
+    if (getTime.seconds.toString().length == 1) {
+      timerSeconds.textContent = "0" + getTime.seconds;
+    } else {
+      timerSeconds.textContent = getTime.seconds;
+    }
+    // минуты
+    if (getTime.minutes.toString().length == 1) {
+      timerMinutes.textContent = "0" + getTime.minutes;
+    } else {
+      timerMinutes.textContent = getTime.minutes;
+    }
+    // часы
+    if (getTime.hours.toString().length == 1) {
+      timerHours.textContent = "0" + getTime.hours;
+    } else {
+      timerHours.textContent = getTime.hours;
+    }
+    // дни
+    if (getTime.days.toString().length == 1) {
+      timerDays.textContent = "0" + getTime.days;
+    } else {
+      timerDays.textContent = getTime.days;
+    }
   };
-  updateClock();
-  // setInterval(countTimer, 1000, "28 february 2023"); // вызываем фцнкцию каждые 1000 мс и передаем в нее значение deadline
+
+  const timerStart = () => {
+    let getTime = getTimeRemaining();
+    if (getTime.timeRemaining > 0) {
+      setInterval(updateClock, 1000); // вызываем фцнкцию каждые 1000 мс и передаем в нее значение deadline
+    }
+  };
+
+  timerStart();
 };
 
 export default timer;
