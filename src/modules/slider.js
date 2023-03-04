@@ -13,7 +13,6 @@ const slider = () => {
       let newDot = document.createElement("li");
       newDot.className = "dot";
       dotsPlace.insertAdjacentElement("beforeend", newDot);
-      console.log(newDot);
     }
     dots = document.querySelectorAll(".dot");
     dots[0].classList.add("dot-active");
