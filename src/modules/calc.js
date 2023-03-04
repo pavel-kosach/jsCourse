@@ -68,7 +68,16 @@ const calc = (price = 100) => {
       totalValue = 0;
     }
 
-    total.textContent = totalValue;
+    // Анимация калькулятора
+    let arr = [];
+    for (let i = 0; i < totalValue; i++) {
+      arr.push(i);
+    }
+    arr.forEach(function (element, i) {
+      setTimeout(function () {
+        total.textContent = i;
+      }, 5 * ++i);
+    });
   };
 
   calcBlock.addEventListener("input", (e) => {
