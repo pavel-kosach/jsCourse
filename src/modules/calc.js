@@ -76,7 +76,7 @@ const calc = (price = 100) => {
     arr.forEach(function (element, i) {
       setTimeout(function () {
         total.textContent = i;
-      }, 5 * ++i);
+      }, 100 +i);
     });
   };
 
